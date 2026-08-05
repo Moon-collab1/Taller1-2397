@@ -64,20 +64,59 @@ public class ClinicaApp {
     // Responsable de: mostrarMenu (ya dado), registrarTurno, mostrarTurnos
 
     static void registrarTurno() {
-        // TODO (Rol A)
+        String id, paciente, espec, duracionMin, valorMin;
+        
+        System.out.println("Ingrese el ID:");
+        id = sc.nextLine();
+        int n = buscarIndicePorId(id);
+        if(n != -1){
+            System.out.print("Ese ID ya existe");
+        }
+        
+        System.out.println("Ingrese nombre del paciente:");
+        paciente = sc.nextLine();
+
+        System.out.println("Ingrese la especialidad:");
+        espec = sc.nextLine();
+
+        System.out.println("Ingrese la duración por minuto:");
+        duracionMin= sc.nextLine();
+        
+        System.out.println("Ingrese el valor por minuto:");
+        valorMin= sc.nextLine();
+
+          String[]turno = new String[CAMPOS];
+          turno[ID]= id;
+          turno[PACIENTE] = paciente;
+          turno[ESPECIALIDAD] = espec;
+          turno[DURACION] = duracionMin;
+          turno[VALOR_MINUTO] = valorMin;
+
+          turnos.add(turno);
+          System.out.print("Turno registrado correctamente");
+
         // 1. Pedir id, paciente, especialidad, duración y valor por minuto.
         // 2. Validar que el ID no exista ya (usar buscarIndicePorId).
         // 3. Crear el arreglo: String[] turno = new String[CAMPOS];
         // 4. Agregarlo a la lista con turnos.add(turno);
     }
-
     static void mostrarTurnos() {
         // TODO (Rol A)
+        if(turnos.isEmpty()){
+            System.out.print("No hay turnos registrados");
+        }
+        System.out.printf("%-6s %-20s %-15s %8s %12s%n", "ID","Paciente","Especialidad", "Duración", "Valor/min" );
+
+       for(int i=0; i<turnos.size(); i++){
+        String[] turno = turnos.get(i);
+        System.out.printf("%-6s %-20s %-15s %8s %12s%n", turno[ID], 
+          turno[PACIENTE], turno[ESPECIALIDAD], turno[DURACION], 
+          turno[VALOR_MINUTO]);
+       }
         // Si la lista está vacía, avisar al usuario.
         // Recorrer la lista e imprimir cada turno en formato tabular y legible.
         // Sugerencia: System.out.printf("%-6s %-20s %-15s %8s %12s%n", ...);
     }
-
     // ================= ROL B: feature/crud-turnos =================
     // Responsable de: buscarTurnoPorId, actualizarTurno, cancelarTurno, buscarIndicePorId
 
