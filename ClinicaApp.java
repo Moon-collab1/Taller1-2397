@@ -107,7 +107,7 @@ public class ClinicaApp {
 
     // ============ ROL C: feature/calculos-validaciones ============
     // Responsable de: calcularTotalFacturado, reportePorEspecialidad, validaciones
-
+    //MyS
     static void calcularTotalFacturado() {
         // TODO (Rol C)
         // Para cada turno: duracionMinutos * valorMinuto.
