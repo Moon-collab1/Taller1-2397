@@ -59,7 +59,6 @@ public class ClinicaApp {
         System.out.println("7. Reporte por especialidad");
         System.out.println("8. Salir");
     }
-
     // ================= ROL A: feature/menu-base =================
     // Responsable de: mostrarMenu (ya dado), registrarTurno, mostrarTurnos
 
@@ -70,7 +69,8 @@ public class ClinicaApp {
         id = sc.nextLine();
         int n = buscarIndicePorId(id);
         if(n != -1){
-            System.out.print("Ese ID ya existe");
+            System.out.println("Ese ID ya existe");
+            return;
         }
         
         System.out.println("Ingrese nombre del paciente:");
@@ -93,7 +93,7 @@ public class ClinicaApp {
           turno[VALOR_MINUTO] = valorMin;
 
           turnos.add(turno);
-          System.out.print("Turno registrado correctamente");
+          System.out.println("Turno registrado correctamente");
 
         // 1. Pedir id, paciente, especialidad, duración y valor por minuto.
         // 2. Validar que el ID no exista ya (usar buscarIndicePorId).
@@ -103,9 +103,10 @@ public class ClinicaApp {
     static void mostrarTurnos() {
         // TODO (Rol A)
         if(turnos.isEmpty()){
-            System.out.print("No hay turnos registrados");
+            System.out.println("No hay turnos registrados");
+            return;
         }
-        System.out.printf("%-6s %-20s %-15s %8s %12s%n", "ID","Paciente","Especialidad", "Duración", "Valor/min" );
+        System.out.printf("%-6s %-20s %-15s %8s %12s%n", "ID","Paciente","Especialidad", "Duración", "Valor/minuto" );
 
        for(int i=0; i<turnos.size(); i++){
         String[] turno = turnos.get(i);
