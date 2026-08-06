@@ -122,6 +122,12 @@ public class ClinicaApp {
     // Responsable de: buscarTurnoPorId, actualizarTurno, cancelarTurno, buscarIndicePorId
 
     static int buscarIndicePorId(String id) {
+        for (int i =0; i< turnos.size(); i++){
+        String[] turno=turnos.get(i);
+        if(turno[ID].equals(id)){
+        return i;
+        }
+    }
         // TODO (Rol B)
         // Recorrer la lista y devolver la POSICIÓN del turno cuyo ID coincida.
         // Si no existe, devolver -1. Este método lo reutilizan los demás roles.
@@ -129,17 +135,85 @@ public class ClinicaApp {
     }
 
     static void buscarTurnoPorId() {
+        System.out.println("ingrese el ID: ");
+        String id= sc.nextLine();
+        int indice= buscarIndicePorId(id);
+        if (indice ==-1){
+            System.out.println(" el turno no existe");
+            return;
+        }
+        String turno []=turnos.get(indice);
+        System.out.println("turno encontrado ");
+        System.out.println("ID: "+ turno[ID]);
+        System.out.println("PACIENTE: "+ turno[PACIENTE]);
+        System.out.println("ESPECIALIDAD" + turno[ESPECIALIDAD]);
+        System.out.println("DURACION" + turno[DURACION]);
+        System.out.println("VALOR POR MINUTO" + turno[VALOR_MINUTO]);
+    
+        
         // TODO (Rol B)
         // Pedir el ID, usar buscarIndicePorId y mostrar los datos o un mensaje de "no existe".
     }
 
     static void actualizarTurno() {
+        System.out.println("ingrese el ID: ");
+        String id= sc.nextLine();
+        int indice= buscarIndicePorId(id);
+         if (indice ==-1){
+            System.out.println(" el turno no existe");
+            return;
+         }
+         System.out.println("que campo desea modificdar: ");
+         System.out.println("1.paciente");
+         System.out.println("2.especialidad");
+         System.out.println("3.duración");
+         System.out.println("4.valor por minuto");
+         int opción= sc.nextInt();
+         String[] turno = turnos.get(indice);
+         switch(opción) {
+            case 1:
+                System.out.println("escriba el paciente: ");
+                turno[PACIENTE]= sc.nextLine();
+                break;
+                case 2:
+                    System.out.println("escriba la especialidad deseada: ");
+                    turno[ESPECIALIDAD]=sc.nextLine();
+                    break;
+                    case 3:
+                        System.out.println("escriba la duración: ");
+                        turno[DURACION]= sc.nextLine();
+                        break;
+                        case 4:
+                            System.out.println("escriba el valor por minuto: ");
+                            turno[VALOR_MINUTO]=sc.nextLine();
+                            break;
+                            default:System.out.println("Opción inválida. Intente de nuevo.");
+                            return;
+         }
         // TODO (Rol B)
         // Pedir el ID, verificar que exista y mostrar un submenú para elegir
         // qué campo modificar: paciente, especialidad, duración o valor por minuto.
-    }
+    } 
 
     static void cancelarTurno() {
+        System.out.println("ingrese el ID: ");
+        String id = sc.nextLine();
+        int indice= buscarIndicePorId(id);
+         if (indice ==-1){
+            System.out.println(" el turno no existe");
+            return;
+         }
+
+         System.out.println("confirme que desea cancelar el turno (SÍ/NO): ");
+         String confirmar=sc.nextLine();
+        
+         if(confirmar.equals("SÍ")){
+         turnos.remove(indice);
+         System.out.println("el turno ha sido removido correctamente");
+         } else {
+            System.out.println("el turno no ha sido removido");
+         }
+
         // TODO (Rol B)
         // Pedir el ID, verificar que exista, pedir confirmación (S/N) y eliminar
         // con turnos.remove(indice);
