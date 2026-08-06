@@ -129,6 +129,7 @@ public class ClinicaApp {
          System.out.println("3.duración");
          System.out.println("4.valor por minuto");
          int opción= sc.nextInt();
+         String[] turno = turnos.get(indice);
          switch(opción) {
             case 1:
                 System.out.println("escriba el paciente: ");
@@ -143,10 +144,10 @@ public class ClinicaApp {
                         turno[DURACION]= sc.nextLine();
                         break;
                         case 4:
-                            System.out.println("escdriba el valor por minuto: ");
+                            System.out.println("escriba el valor por minuto: ");
                             turno[VALOR_MINUTO]=sc.nextLine();
                             break;
-                            default -> System.out.println("Opción inválida. Intente de nuevo.");
+                            default:System.out.println("Opción inválida. Intente de nuevo.");
                             return;
          }
         // TODO (Rol B)
@@ -162,6 +163,7 @@ public class ClinicaApp {
             System.out.println(" el turno no existe");
             return;
          }
+
          System.out.println("confirme que desea cancelar el turno (SÍ/NO): ");
          String confirmar=sc.nextLine();
         
