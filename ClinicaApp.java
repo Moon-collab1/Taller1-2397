@@ -147,6 +147,7 @@ public class ClinicaApp {
                             turno[VALOR_MINUTO]=sc.nextLine();
                             break;
                             default -> System.out.println("Opción inválida. Intente de nuevo.");
+                            return;
          }
         // TODO (Rol B)
         // Pedir el ID, verificar que exista y mostrar un submenú para elegir
