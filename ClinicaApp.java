@@ -221,12 +221,20 @@ public class ClinicaApp {
 
     // ============ ROL C: feature/calculos-validaciones ============
     // Responsable de: calcularTotalFacturado, reportePorEspecialidad, validaciones
-
+    //MyS
     static void calcularTotalFacturado() {
         // TODO (Rol C)
         // Para cada turno: duracionMinutos * valorMinuto.
         // Mostrar el subtotal de cada turno y el gran total al final.
         // Recuerde convertir el texto a número antes de operar.
+                    int total=0;
+            for(int l=0;l<=turnos.size();l++){
+            String[] t= turnos.get(l);
+            int sub = Integer.parseInt(t[DURACION])*Integer.parseInt(t[VALOR_MINUTO]);
+            System.out.println("turno("+l+"). "+sub);
+            total=total+sub;
+            }
+            System.out.println("El total de los turnos es: "+total);
     }
 
     static void reportePorEspecialidad() {
@@ -234,6 +242,22 @@ public class ClinicaApp {
         // Pedir una especialidad y mostrar solo los turnos de esa especialidad,
         // junto con la cantidad de turnos y el promedio de duración en minutos.
         // Comparar con equalsIgnoreCase para no depender de mayúsculas.
+        int can=0;
+        int min=0;
+        int n=0;
+        System.out.println("Escribe la especilidad que desea buscar: ");
+        String esp=sc.nextLine();
+        for(int l=0;l<=turnos.size();l++){
+         if(turnos.get(l)[ESPECIALIDAD].equalsIgnoreCase(esp)){
+                can=can+1;
+                min=min+Integer.parseInt(turnos.get(l)[DURACION]);
+                n=n+1;
+                String[] t= turnos.get(l);
+            System.out.printf("%-15s%n",t[ESPECIALIDAD]);
+            }
+        }
+        System.out.println("la cantidad de turnos total: "+can);
+        System.out.println("el promedio de duración(minutos) de todos los turnos fue: "+min/n);
     }
 
     // ====== Utilidades (ya implementadas, no es necesario modificarlas) ======
