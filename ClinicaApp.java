@@ -128,7 +128,7 @@ public class ClinicaApp {
          System.out.println("2.especialidad");
          System.out.println("3.duración");
          System.out.println("4.valor por minuto");
-         int opción= Integer.parseInt(sc.nextLine);
+         int opción= sc.nextInt();
          switch(opción) {
             case 1:
                 System.out.println("escriba el paciente: ");
