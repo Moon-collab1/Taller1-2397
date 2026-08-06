@@ -128,12 +128,30 @@ public class ClinicaApp {
          System.out.println("2.especialidad");
          System.out.println("3.duración");
          System.out.println("4.valor por minuto");
-
-
+         int opción= Integer.parseInt(sc.nextLine);
+         switch(opción) {
+            case 1:
+                System.out.println("escriba el paciente: ");
+                turno[PACIENTE]= sc.nextLine();
+                break;
+                case 2:
+                    System.out.println("escriba la especialidad deseada: ");
+                    turno[ESPECIALIDAD]=sc.nextLine();
+                    break;
+                    case 3:
+                        System.out.println("escriba la duración: ");
+                        turno[DURACION]= sc.nextLine();
+                        break;
+                        case 4:
+                            System.out.println("escdriba el valor por minuto: ");
+                            turno[VALOR_MINUTO]=sc.nextLine();
+                            break;
+                            default -> System.out.println("Opción inválida. Intente de nuevo.");
+         }
         // TODO (Rol B)
         // Pedir el ID, verificar que exista y mostrar un submenú para elegir
         // qué campo modificar: paciente, especialidad, duración o valor por minuto.
-    }
+    } 
 
     static void cancelarTurno() {
         System.out.println("ingrese el ID: ");
@@ -144,10 +162,16 @@ public class ClinicaApp {
             return;
          }
          System.out.println("confirme que quiere eliminar el turno: ");
+         String Sino = sc.nextLine();
+         System.out.println("confirme que desea cancelar el turno (SÍ/NO): ");
+         String confirmar=sc.nextLine();
         
+         if(confirmar.equals("SÍ")){
          turnos.remove(indice);
          System.out.println("el turno ha sido removido correctamente");
-
+         } else {
+            System.out.println("el turno no ha sido removido");
+         }
 
         // TODO (Rol B)
         // Pedir el ID, verificar que exista, pedir confirmación (S/N) y eliminar
