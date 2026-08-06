@@ -162,8 +162,6 @@ public class ClinicaApp {
             System.out.println(" el turno no existe");
             return;
          }
-         System.out.println("confirme que quiere eliminar el turno: ");
-         String Sino = sc.nextLine();
          System.out.println("confirme que desea cancelar el turno (SÍ/NO): ");
          String confirmar=sc.nextLine();
         
